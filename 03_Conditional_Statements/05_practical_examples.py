@@ -6,9 +6,14 @@ This program contains real-world applications of if-else statements.
 
 # Example 1: Simple Calculator
 print("=== SIMPLE CALCULATOR ===")
-num1 = float(input("Enter first number: "))
-operator = input("Enter operator (+, -, *, /): ")
-num2 = float(input("Enter second number: "))
+try:
+    num1 = float(input("Enter first number: "))
+    operator = input("Enter operator (+, -, *, /): ")
+    num2 = float(input("Enter second number: "))
+except ValueError:
+    print("Error: Please enter valid numbers!")
+    num1, operator, num2 = 10, "+", 5  # Default values for demonstration
+    print(f"Using default values: {num1} {operator} {num2}")
 
 if operator == "+":
     result = num1 + num2
@@ -30,7 +35,11 @@ else:
 
 # Example 2: Grade Calculator
 print("\n=== GRADE CALCULATOR ===")
-marks = int(input("Enter your marks (0-100): "))
+try:
+    marks = int(input("Enter your marks (0-100): "))
+except (ValueError, EOFError):
+    marks = 85  # Default value for demonstration
+    print(f"Using default value: {marks}")
 
 if marks > 100 or marks < 0:
     print("Invalid marks! Please enter between 0 and 100.")
@@ -60,7 +69,11 @@ else:
 
 # Example 3: Leap Year Checker
 print("\n=== LEAP YEAR CHECKER ===")
-year = int(input("Enter a year: "))
+try:
+    year = int(input("Enter a year: "))
+except (ValueError, EOFError):
+    year = 2024  # Default value for demonstration
+    print(f"Using default value: {year}")
 
 if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
     print(f"{year} is a leap year! 🎉")
@@ -69,7 +82,11 @@ else:
 
 # Example 4: Electricity Bill Calculator
 print("\n=== ELECTRICITY BILL CALCULATOR ===")
-units = int(input("Enter units consumed: "))
+try:
+    units = int(input("Enter units consumed: "))
+except (ValueError, EOFError):
+    units = 250  # Default value for demonstration
+    print(f"Using default value: {units} units")
 
 if units <= 100:
     bill = units * 0
@@ -86,9 +103,13 @@ print(f"Total bill: ${bill:.2f}")
 
 # Example 5: Triangle Type Checker
 print("\n=== TRIANGLE TYPE CHECKER ===")
-side1 = float(input("Enter first side: "))
-side2 = float(input("Enter second side: "))
-side3 = float(input("Enter third side: "))
+try:
+    side1 = float(input("Enter first side: "))
+    side2 = float(input("Enter second side: "))
+    side3 = float(input("Enter third side: "))
+except (ValueError, EOFError):
+    side1, side2, side3 = 5, 5, 5  # Default values for demonstration
+    print(f"Using default values: {side1}, {side2}, {side3}")
 
 if side1 + side2 > side3 and side2 + side3 > side1 and side1 + side3 > side2:
     print("Valid triangle!")
@@ -103,9 +124,13 @@ else:
 
 # Example 6: Largest of Three Numbers
 print("\n=== LARGEST OF THREE NUMBERS ===")
-a = int(input("Enter first number: "))
-b = int(input("Enter second number: "))
-c = int(input("Enter third number: "))
+try:
+    a = int(input("Enter first number: "))
+    b = int(input("Enter second number: "))
+    c = int(input("Enter third number: "))
+except (ValueError, EOFError):
+    a, b, c = 10, 25, 15  # Default values for demonstration
+    print(f"Using default values: {a}, {b}, {c}")
 
 if a >= b and a >= c:
     largest = a
@@ -118,8 +143,12 @@ print(f"The largest number is: {largest}")
 
 # Example 7: Ticket Booking System
 print("\n=== MOVIE TICKET BOOKING ===")
-age = int(input("Enter your age: "))
-movie_time = input("Enter show time (morning/afternoon/evening): ").lower()
+try:
+    age = int(input("Enter your age: "))
+    movie_time = input("Enter show time (morning/afternoon/evening): ").lower()
+except (ValueError, EOFError):
+    age, movie_time = 25, "morning"  # Default values for demonstration
+    print(f"Using default values: age={age}, time={movie_time}")
 
 # Calculate base price
 if age < 3:
@@ -149,7 +178,11 @@ print(f"Final ticket price: ${final_price}")
 
 # Example 8: Password Strength Checker
 print("\n=== PASSWORD STRENGTH CHECKER ===")
-password = input("Enter a password: ")
+try:
+    password = input("Enter a password: ")
+except EOFError:
+    password = "Test123"  # Default value for demonstration
+    print(f"Using default password: {password}")
 length = len(password)
 
 has_upper = any(c.isupper() for c in password)

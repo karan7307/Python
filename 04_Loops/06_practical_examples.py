@@ -251,8 +251,7 @@ for i in range(total_tasks + 1):
     percentage = (i / total_tasks) * 100
     filled = int(percentage / 5)
     bar = "█" * filled + "-" * (20 - filled)
-    print(f"\rProgress: [{bar}] {percentage:.0f}%", end="")
-    if i < total_tasks:
-        import time
-        time.sleep(0.05)  # Small delay for visualization
-print("\nComplete!")
+    # Showing progress at key milestones for better performance
+    if i % 5 == 0 or i == total_tasks:
+        print(f"Progress: [{bar}] {percentage:.0f}%")
+print("Complete!")
